@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width')
+        title= title
+        block css
+            link(rel='stylesheet', href='/css/style.css')
+            link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+        block js
+            if ENV_DEVELOPMENT
+                script(src='http://localhost:35729/livereload.js')
+            script. 
+                window.editor = null;
+            script(src="//code.jquery.com/jquery-2.2.0.min.js")
+            script(src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js")
+            script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+            script(src="/js/console.js")
+            script(src="/js/controls.js")
+    body
+        block content
+
+        block endjs

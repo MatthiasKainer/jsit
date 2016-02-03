@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    h1= title
+    #editor console.log("hello world"); console.error("error");    
+    #console
+        .btn-group
+            button.btn.btn-default(data-run)
+                i.glyphicon.glyphicon-play
+            button.btn.btn-default(data-trash)
+                i.glyphicon.glyphicon-trash
+            .btn-group
+                button.btn.btn-default.dropdown-toggle(data-toggle="dropdown") 
+                    span(data-language-text) javascript
+                    span  
+                    .caret
+                ul.dropdown-menu(data-language-select)
+                    li: a javascript
+                    li: a typescript
+        button.btn.btn-default.hidden(data-transpile, data-language-available="typescript")
+            i.glyphicon.glyphicon-flash
+
+        hr
+        pre(data-console)
+    
+block endjs
+    script.
+        editor = ace.edit("editor")
+        editor.setTheme("ace/theme/ambiance");
+        editor.getSession().setMode("ace/mode/javascript");
