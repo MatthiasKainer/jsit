@@ -8,3 +8,5 @@
 ```
 
 Then open ```http://localhost:3000```
+
+![screenshot](blob/master/public/img/screenshot.png)

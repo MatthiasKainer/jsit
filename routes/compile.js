@@ -14,7 +14,7 @@ router.post('/ts', function(req, res) {
         "preserveConstEnums": true,
         "target" : target(req)
     };
-    if (req.body.jsx) 
+    if (req.body.tsx) 
         compileOptions["jsx"] = ts.JsxEmit.React;
     res.send(ts.transpile(req.body.src, compileOptions));
 });
