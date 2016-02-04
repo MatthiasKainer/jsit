@@ -9,4 +9,4 @@
 
 Then open ```http://localhost:3000```
 
-![screenshot](blob/master/public/img/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/MatthiasKainer/jsit/master/public/img/screenshot.PNG)
