@@ -8,21 +8,15 @@ var target = function(req) {
 
 router.post('/ts', function(req, res) {
     console.log(req.body.src);
-    res.send(ts.transpile(req.body.src, {
+    var compileOptions = {
         "module": ts.ModuleKind.CommonJS,
         "noImplicitAny": true,
         "preserveConstEnums": true,
-        "target" :  target(req)
-    }));
-});
-router.post('/tsx', function(req, res) {
-    res.send(ts.transpile(req.body.src, {
-        "module": ts.ModuleKind.CommonJS,
-        "noImplicitAny": true,
-        "preserveConstEnums": true,
-        "jsx" : ts.JsxEmit.React,
         "target" : target(req)
-    }));
+    };
+    if (req.body.jsx) 
+        compileOptions["jsx"] = ts.JsxEmit.React;
+    res.send(ts.transpile(req.body.src, compileOptions));
 });
 
 module.exports = router;

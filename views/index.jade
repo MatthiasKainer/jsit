@@ -17,7 +17,13 @@ block content
                 ul.dropdown-menu(data-language-select)
                     li: a javascript
                     li: a typescript
-                    li: a typescript-react
+        .btn-group.hidden(data-toggle="buttons", data-language-available="typescript")
+            .btn.btn-default
+                input(type="checkbox", name="tsx", autocomplete="off") 
+                | tsx
+            .btn.btn-default
+                input(type="checkbox", name="es6", autocomplete="off")
+                | ES6
         button.btn.btn-default.hidden(data-transpile, data-language-available="typescript")
             i.glyphicon.glyphicon-flash
 
