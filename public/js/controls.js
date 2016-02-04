@@ -15,16 +15,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $('[data-console]').text(""); 
     });
     $("[data-transpile]").on("click", function() {
-        $.post('/ts', { src : editor.getValue() }, function(data) {
+        var endpoint = {
+            "typescript" : "ts",
+            "typescript-react": "tsx"
+        };
+        
+        $.post(`/compile/${endpoint[language]}`, { src : editor.getValue() }, function(data) {
             $('[data-console]').text(""); 
             $('[data-console]').text("// transpiled ts\n" + data);
         });
     });
     $("[data-language-select]").on('click', 'li a', function(){
         language = this.innerText;
-        editor.getSession().setMode("ace/mode/" + language);
+        var languageMapping = {
+            "javascript" : "javascript",
+            "typescript" : "typescript",
+            "typescript-react" : "typescript"
+        };
+        
+        var mappedLanguage = languageMapping[language];
+        
+        editor.getSession().setMode("ace/mode/" + mappedLanguage);
         $("[data-language-text]").text(language);
-        $(`[data-language-available="${language}"]`).removeClass('hidden');
-        $(`[data-language-available]`).not(`[data-language-available="${language}"]`).addClass('hidden');
+        $(`[data-language-available="${mappedLanguage}"]`).removeClass('hidden');
+        $(`[data-language-available]`).not(`[data-language-available="${mappedLanguage}"]`).addClass('hidden');
    });
 });
